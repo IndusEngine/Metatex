@@ -34,6 +34,8 @@ public sealed class MetatexImporter : ScriptedImporter
     [SerializeField] bool _compression = true;
     [SerializeField] bool _linear = false;
 
+    [SerializeField] bool _keepReadable = false;
+
     #endregion
 
     #region ScriptedImporter implementation
@@ -142,7 +144,7 @@ public sealed class MetatexImporter : ScriptedImporter
 
         texture.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
         if (_compression) texture.Compress(true);
-        texture.Apply(true, true);
+        texture.Apply(true, !_keepReadable);
 
         RenderTexture.active = prevRT;
 
