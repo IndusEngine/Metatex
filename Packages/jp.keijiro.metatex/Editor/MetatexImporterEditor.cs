@@ -30,6 +30,7 @@ sealed class MetatexImporterEditor : ScriptedImporterEditor
 
     AutoProperty _compression;
     AutoProperty _linear;
+    AutoProperty _keepReadable;
 
     static class Labels
     {
@@ -98,6 +99,8 @@ sealed class MetatexImporterEditor : ScriptedImporterEditor
 
         if (QualitySettings.activeColorSpace == ColorSpace.Linear)
             EditorGUILayout.PropertyField(_linear.Target);
+
+        EditorGUILayout.PropertyField(_keepReadable.Target);
 
         serializedObject.ApplyModifiedProperties();
         ApplyRevertGUI();
